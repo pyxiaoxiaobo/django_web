@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'demo4.apps.Demo4Config'
     'rest_framework',
     'corsheaders',
 ]
@@ -124,6 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL= 'users.UserProfile'
+AUTH_USER_MODEL= 'demo4.UserDemo4'
+
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -1,5 +1,12 @@
 from rest_framework import serializers
 from .models import UserProfile, Book, Type, Type2, Type3, Type4
+from .models import NewType
+
+
+class NewTypeModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewType
+        fields = "__all__"
 
 
 class BookSerializer(serializers.Serializer):

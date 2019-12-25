@@ -16,4 +16,5 @@ urlpatterns = [
     path('type2/', Type2View.as_view()),
     path('type3/', Type3View.as_view()),
     path('type4/', Type4View.as_view()),
+    path('newtype/', NewTypeView.as_view()),
 ]

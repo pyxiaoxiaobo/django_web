@@ -47,6 +47,18 @@ class NewType(models.Model):
         related_name='sub_cat',
         on_delete=models.CASCADE
     )
+    is_tab = models.BooleanField(
+        default=False,
+        verbose_name='是否导航',
+        help_text='是否导航'
+    )
+
+    class Meta:
+        verbose_name='商品类别'
+        verbose_name_plural=verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class UserProfile(AbstractUser):

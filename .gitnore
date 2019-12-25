@@ -1,0 +1,12 @@
+*.git*
+*.swp
+*.pyc
+*.idea*
+*__pycache__*
+.DS_Storegit
+.DS_Store
+db.sqlite3
+logs
+upload
+w1.pid
+

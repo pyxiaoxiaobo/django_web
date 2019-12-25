@@ -5,14 +5,36 @@ from .serializers import Type3ModelSerializer, Type4ModelSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import UserProfile, Book
-from .models import Type, Type2, Type3, Type4
+from .models import Type, Type2, Type3, Type4, NewType
 from rest_framework import mixins, generics, viewsets
 from rest_framework.permissions import BasePermission
 # Create your views here.
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
+from .serializers import NewTypeModelSerializer
 
+class NewTypeView(APIView):
+    '''
+    操作类别表
+    '''
+    render_classes = [JSONRenderer]
+    def get(self, request, format=None):
+        types = NewType.objects.all()
+        type_serializer = NewTypeModelSerializer(types, many=True)
+        return Response(type_serializer.data)
 
-
+    def post(self, request):
+        name = request.data.get('name')
+        category_type = request.data.get('lei')
+        parent_category_id = request.data.get('parent')
+        type=NewType()
+        type.name = name
+        type.category_type = category_type
+        if parent_category_id:
+            parent_category = NewType.objects.filter(id=parent_category_id).first()
+            type.parent_category = parent_category
+        type.save()
+        type_serializer = NewTypeModelSerializer(type)
+        return Response(type_serializer.data)
 
 
 class Type1View(APIView):
